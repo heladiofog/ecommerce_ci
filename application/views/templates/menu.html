@@ -1,0 +1,51 @@
+<section id='encabezado'>
+	<header>
+
+		<?php					    			
+			if(isset($this->session->userdata('sitio')->url_imageVc) &&  $this->session->userdata('sitio')->url_imageVc!= ""){				
+				echo "<a href='".$this->session->userdata('sitio')->urlVc."'><img src='".base_url() . $this->session->userdata('sitio')->url_imageVc . "' alt='Grupo Expansión' border=0 /></a>";	
+			}	
+			else if (!empty($url_imageVc)){								
+				echo "<a href='$url_sitio'><img src='".base_url() . $url_imageVc . "' alt='Grupo Expansión' border=0/></a>";
+			}
+			else{
+				echo "<div style='width: 300px; height: 30px;'></div>";		
+			}		
+		?>
+	</header>
+	<section>
+		<nav>
+			<div class="izquierda">
+				<div class="proceso-pago">
+					<?php if(($this->uri->segment(1) =='registro') || ($this->uri->segment(1) =='login') || ($this->uri->segment(1) =='')) $img='-select'; else $img='';?>
+					<div class="img-proceso-pago img-inicio<?php echo $img; ?>" >
+					</div>
+					<a href="#" class="txt-proceso-pago<?php echo $img; ?>">Inicio</a>
+				</div>
+				<div class="proceso-pago">
+					<?php if(($this->uri->segment(1) == "direccion_envio") || ($this->uri->segment(1) =="forma_pago")) $img='-select'; else $img='';?>
+					<div class="img-proceso-pago img-pago-envio<?php echo $img; ?>">
+					</div>
+					<a href="#" class="txt-proceso-pago<?php echo $img; ?>">Pago&nbsp;y&nbsp;Envío</a>
+				</div>
+				<div class="proceso-pago">
+					<?php if($this->uri->segment(1) == "direccion_facturacion") $img='-select'; else $img='';?>
+					<div class="img-proceso-pago img-facturacion<?php echo $img ?>" >
+					</div>
+					<a href="#" class="txt-proceso-pago<?php echo $img ?>">Facturación</a>
+				</div>
+				<div class="proceso-pago">
+					<?php if($this->uri->segment(1) == "orden_compra") $img='-select'; else $img='';?>
+					<div class="img-proceso-pago img-compra<?php echo $img; ?>">
+					</div>
+					<a href="#" class="txt-proceso-pago<?php echo $img; ?>">Finalizar&nbsp;Compra</a>
+				</div>
+			</div>
+			<div class="derecha">
+				<div class="necesita-ayuda img-ayuda">				
+				</div>	
+			</div>
+		</nav>
+	</section>
+</section>
+<div id="pleca-punteada">&nbsp;</div>

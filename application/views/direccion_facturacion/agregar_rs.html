@@ -1,0 +1,77 @@
+<script>		
+	function cambia_check(id){					
+		if(document.getElementById('div'+id)){
+			if(document.getElementById('div'+id).className!='checkbox_selected'){
+				document.getElementById('div'+id).className='checkbox_selected';
+				document.getElementById(id).checked='checked';	
+			}
+			else{
+				document.getElementById('div'+id).className='checkbox_no_selected';
+				document.getElementById(id).checked='';
+			}
+			
+		}																				
+	}
+</script>	
+<div class="instrucciones_mensaje"><b>Nueva raz&oacute;n social</b></div>
+<div class="contenedor-gris">
+	<form id="form_agregar_rs" action="<?php echo site_url('direccion_facturacion/registrar_rs');?>" method="post">
+		<table>
+			<tr>
+				<td class="label">Nombre o Raz&oacute;n Social</td>
+				<td>
+					<span class="alinear_izquierda">
+						<input type="text" name="txt_razon_social" id="txt_razon_social" size="30" value="<?php if(isset($_POST['txt_razon_social'])) echo htmlspecialchars($_POST['txt_razon_social']);?>"/>
+					</span>
+					<span class="asterisco">&nbsp;</span>
+					<?php if(isset($reg_errores['txt_razon_social'])) echo ($reg_errores['txt_razon_social']);?>
+				</td>
+			</tr>
+			<tr>
+				<td class="label">RFC</td>
+				<td>
+					<span class="alinear_izquierda">
+						<input type="text" name="txt_rfc" id="txt_rfc" size="30" value="<?php if(isset($_POST['txt_rfc'])) echo htmlspecialchars($_POST['txt_rfc']);?>"/>
+					</span>
+					<span class="asterisco">&nbsp;</span>
+					<?php if(isset($reg_errores['txt_rfc'])) echo ($reg_errores['txt_rfc']);?>
+				</td>
+			</tr>
+			<tr>
+				<td class="label">Correo Electr&oacute;nico de Env&iacute;o</td>
+				<td>
+					<span class="alinear_izquierda">
+						<input type="text" name="txt_email" id="txt_email" value="<?php if(isset($_POST['txt_email'])) echo htmlspecialchars($_POST['txt_email']); else echo $this->session->userdata('email');?>" size="30"/>
+					</span>
+					<span class="asterisco">&nbsp;</span>
+					<?php if(isset($reg_errores['txt_email'])) echo ($reg_errores['txt_email']);?>					
+				</td>
+			</tr>
+			<tr>
+				<td class="label">&nbsp;</td>
+				<td>
+					<div class="instrucciones_cursivas">Escribe el correo electrónico al que enviaremos tu factura.</div>
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td class="label_izq">	
+					<div class="float_izq">
+						<input type="checkbox" id="chk_default" name="chk_default"/>					
+						<div id="divchk_default" class="checkbox_no_selected" onclick="cambia_check('chk_default')">&nbsp;					
+						</div>												
+						Usar como raz&oacute;n social para pago express
+					</div>
+					<?php $this->load->view('mensaje_pago_express'); ?>	
+																		
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>
+					<input type="submit" id="guardar_rs" value="&nbsp;" class="usar_razon_social_large"/>					
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
